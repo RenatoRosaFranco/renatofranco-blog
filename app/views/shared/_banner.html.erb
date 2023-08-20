@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-center">
+            <i class="fa-solid fa-circle-info bold"></i>
+            <%= flash[:notice] %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -1,0 +1,54 @@
+<%= provide :title, @post.title %>
+<%= provide :description, truncate(@post.body, length: 145) %>
+<%= provide :keywords, @post.tags %>
+
+<script type="application/ld+json">
+  {
+    "@type": "https://schema.org"
+  }
+</script>
+
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        
+        <div class='col-md-offset-2 col-md-8'>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h1 class='text-center bold'><%= @post.title %></h1>
+              <ul class="list-unstyled list-inline">
+                <li>
+                  <%= image_tag(@post.user_avatar, class: 'md-avatar') %>
+                  <span class='bold'><%= @post.user_name %></span>
+                </li>
+                <li>
+                  <i class="fa-regular fa-calendar"></i>
+                  <%= to_date(@post.user.created_at) %>
+                </li>
+                <li>
+                  <i class="fa-regular fa-clock"></i>
+                  <%= reading_time(@post.body) %>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row"><br />
+            <div class='col-md-12 text-justify'>
+              <%= raw(@post.body) %>
+            </div>
+          </div>
+
+          <div class="row"><br />
+            <div class="col-md-12 text-center">
+              <% @post.tags.split('#').reject(&:blank?).each do |tag| %>
+                <span class='bold'><%= tag %></span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

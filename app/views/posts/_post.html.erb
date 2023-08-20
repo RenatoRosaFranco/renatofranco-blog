@@ -1,0 +1,13 @@
+<%= link_to post_path(post), class: 'post' do %>
+  <div class="col-md-12">
+    <div class='panel panel-default'>
+      <div class='panel-body'>
+        <h2 class='bold text-center'><%= post.title %></h2>
+
+        <p class='text-center'>
+          <%= truncate(post.body, length: 145) %>  
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>

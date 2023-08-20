@@ -1,0 +1,66 @@
+<%= provide :title, '' %>
+<%= provide :description, '' %>
+<%= provide :keywords, '' %>
+
+<script type="application/ld+json">
+  {
+    "@type": "https://schema.org"
+  }
+</script>
+
+<section id="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-offset-2 col-md-8">
+            <div class='text-center'>
+              <%= image_tag(default_avatar, class: 'lg-avatar') %>
+            </div>
+
+            <h2 class='bold text-center uppercase'>Renato Rosa Franco</h2>
+            <p class='text-center'><span class='bold'>Engenheiro de Software Sênior</span>, 
+            Futurista, Atleta, Pet Lover,<br/> Advogado Antitrust e Investidor de Startups.</p>
+            <br />
+
+            <div class="text-center">
+              
+              <%= form_for(@newsletter) do |f| %>
+                <div class="field col-md-8 col-md-offset-2">
+                  <p>Inscreva-se para receber posts futuros via email
+                  <span class='bold'><br>(ou assine o RSS feed)</span></p>
+
+                  <div class='col-md-offset-1 col-md-10'>
+                    <div class='input-group'>
+                      <%= f.email_field :email, class: 'form-control',
+                      required: 'required', placeholder: 'Digite seu email...' %>
+                      <div class='input-group-addon'>
+                        Inscreva-se
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div class='col-md-offset-2 col-md-8' style='margin-top: 40px;'>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render @posts %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class='text-center'>
+                <%= paginate(@posts) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
